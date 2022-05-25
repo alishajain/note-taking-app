@@ -22,7 +22,7 @@ export const getAllNotes = async () => {
   return transformedNotes;
 }
 
-export const getSingleNote = (quoteId) => {
+export const getSingleNote = async(noteId) => {
     const response = await fetch(`${DOMAIN}/notes/${noteId}.json`);
     const data = await response.json();
 
@@ -38,7 +38,7 @@ export const getSingleNote = (quoteId) => {
     return loadedNote;
 }
 
-export const addNote = (noteData) => {
+export const addNote = async (noteData) => {
     const response = await fetch(`${DOMAIN}/notes.json`, {
         method: 'POST',
         body: JSON.stringify(noteData),
@@ -50,7 +50,7 @@ export const addNote = (noteData) => {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(error.message || 'Could not create Note!!!');
+        throw new Error(data.message || 'Could not create Note!!!');
     }
 
     return null;

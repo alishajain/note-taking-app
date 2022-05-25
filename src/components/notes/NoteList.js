@@ -1,10 +1,10 @@
 import { Fragment } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import NoteItem from "./NoteItem";
 import classes from './NoteList.module.css';
 
-const NoteList = () => {
+const NoteList = (props) => {
     const location = useLocation();
 
     const queryParams = new URLSearchParams(location.search);
@@ -12,7 +12,7 @@ const NoteList = () => {
     return (
         <Fragment>
             <ul className={classes.list}>
-                <NoteItem key={note.id} id={note.id} text={note.text} />
+                <NoteItem key={props.note.id} id={props.note.id} text={props.note.text} />
             </ul>
         </Fragment>
     );
