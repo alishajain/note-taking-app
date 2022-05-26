@@ -5,36 +5,40 @@ import Card from "../ui/Card";
 import LoadingSpinner from "../ui/LoadingSpinner";
 import classes from "./NoteForm.module.css";
 
-const NoteForm = (props) => {
+const NoteForms = (props) => {
   const [isEntering, setIsEntering] = useState(false);
 
-  const textRef = useRef();
+  const textInputRef = useRef();
 
-  const submitHandler = (event) => {
+  function submitFormHandler(event) {
     event.preventDefault();
-    const enteredText = textRef.current.value;
+
+    const enteredText = textInputRef.current.value;
 
     props.onAddNote({ text: enteredText });
-  };
+  }
 
   const finishEnteringHandler = () => {
     setIsEntering(false);
   };
 
-  const focusHandler = () => {
+  const formFocusedHandler = () => {
     setIsEntering(true);
   };
+
   return (
     <Fragment>
       <Prompt
         when={isEntering}
-        message={(location) => "Do you want to leave?"}
+        message={(location) =>
+          'Are you sure you want to leave? All your entered data will be lost!'
+        }
       />
       <Card>
         <form
-          onFocus={focusHandler}
-          onSubmit={submitHandler}
+          onFocus={formFocusedHandler}
           className={classes.form}
+          onSubmit={submitFormHandler}
         >
           {props.isLoading && (
             <div className={classes.loading}>
@@ -42,13 +46,11 @@ const NoteForm = (props) => {
             </div>
           )}
           <div className={classes.control}>
-            <label htmlFor="text">Text</label>
-            <textarea id="text" rows="5" ref={textRef}></textarea>
+            <label htmlFor='text'>Text</label>
+            <textarea id='text' rows='5' ref={textInputRef}></textarea>
           </div>
-          <div className={classes.action}>
-            <button className="btn" onClick={finishEnteringHandler}>
-              Add Note
-            </button>
+          <div className={classes.actions}>
+            <button onClick={finishEnteringHandler} className='btn'>Add Note</button>
           </div>
         </form>
       </Card>
@@ -56,4 +58,4 @@ const NoteForm = (props) => {
   );
 };
 
-export default NoteForm;
+export default NoteForms;

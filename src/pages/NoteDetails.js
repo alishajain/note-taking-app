@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import HighlightedNote from "../components/notes/HighlightedNote";
@@ -9,7 +9,7 @@ import { getSingleNote } from "../lib/api";
 const NoteDetail = () => {
   const params = useParams;
 
-  const noteId = params;
+  const { noteId } = params;
 
   const {
     sendRequest,
@@ -34,15 +34,11 @@ const NoteDetail = () => {
     return <p className="centered focused">{error}</p>;
   }
 
-  if (!loadedNotes.data) {
+  if (!loadedNotes.text) {
     return <p className="centered">No Notes Found</p>;
   }
 
-  return (
-      <Fragment>
-          <HighlightedNote text={loadedNotes.text} />
-      </Fragment>
-  )
+  return <HighlightedNote text={loadedNotes.text} />;
 };
 
 export default NoteDetail;

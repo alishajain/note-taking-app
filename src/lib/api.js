@@ -1,11 +1,11 @@
-const DOMAIN = "https://note-taking-app-9601a-default-rtdb.firebaseio.com/";
+const FIREBASE_DOMAIN = 'https://note-taking-app-9601a-default-rtdb.firebaseio.com/';
 
-export const getAllNotes = async () => {
-  const response = await fetch(`${DOMAIN}/notes.json`);
-  const data = await response.data;
+export async function getAllNotes() {
+  const response = await fetch(`${FIREBASE_DOMAIN}/notes.json`);
+  const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || "Could not fetch notes");
+    throw new Error(data.message || 'Could not fetch quotes.');
   }
 
   const transformedNotes = [];
@@ -22,36 +22,36 @@ export const getAllNotes = async () => {
   return transformedNotes;
 }
 
-export const getSingleNote = async(noteId) => {
-    const response = await fetch(`${DOMAIN}/notes/${noteId}.json`);
-    const data = await response.json();
+export async function getSingleNote(noteId) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/notes/${noteId}.json`);
+  const data = await response.json();
 
-    if(!response.ok) {
-        throw new Error(data.message || 'Could not fetch note');
-    }
+  if (!response.ok) {
+    throw new Error(data.message || 'Could not fetch quote.');
+  }
 
-    const loadedNote = {
-        id: noteId,
-        ...data
-    };
+  const loadedNote = {
+    id: noteId,
+    ...data,
+  };
 
-    return loadedNote;
+  return loadedNote;
 }
 
-export const addNote = async (noteData) => {
-    const response = await fetch(`${DOMAIN}/notes.json`, {
-        method: 'POST',
-        body: JSON.stringify(noteData),
-        headers:{
-            'Content-Type': 'application/json'
-        },
-    });
+export async function addNote(noteData) {
+  const response = await fetch(`${FIREBASE_DOMAIN}/notes.json`, {
+    method: 'POST',
+    body: JSON.stringify(noteData),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
 
-    const data = await response.json();
+  if (!response.ok) {
+    console.log('Api......Alisha');
+    throw new Error(data.message || 'Could not create quote.');
+  }
 
-    if (!response.ok) {
-        throw new Error(data.message || 'Could not create Note!!!');
-    }
-
-    return null;
+  return null;
 }
