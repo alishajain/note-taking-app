@@ -7,7 +7,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 import { getSingleNote } from "../lib/api";
 
 const NoteDetail = () => {
-  const params = useParams;
+  const params = useParams();
 
   const { noteId } = params;
 
@@ -37,6 +37,7 @@ const NoteDetail = () => {
   if (!loadedNotes.text) {
     return <p className="centered">No Notes Found</p>;
   }
+  console.log(loadedNotes);
 
   return <HighlightedNote text={loadedNotes.text} />;
 };

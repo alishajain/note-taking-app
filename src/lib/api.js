@@ -5,7 +5,7 @@ export async function getAllNotes() {
   const data = await response.json();
 
   if (!response.ok) {
-    throw new Error(data.message || 'Could not fetch quotes.');
+    throw new Error(data.message || 'Could not fetch notes.');
   }
 
   const transformedNotes = [];
@@ -22,12 +22,12 @@ export async function getAllNotes() {
   return transformedNotes;
 }
 
-export async function getSingleNote(noteId) {
+export const getSingleNote = async (noteId) => {
   const response = await fetch(`${FIREBASE_DOMAIN}/notes/${noteId}.json`);
   const data = await response.json();
-
+console.log('api......getSingleNote');
   if (!response.ok) {
-    throw new Error(data.message || 'Could not fetch quote.');
+    throw new Error(data.message || 'Could not fetch note.');
   }
 
   const loadedNote = {
@@ -38,7 +38,7 @@ export async function getSingleNote(noteId) {
   return loadedNote;
 }
 
-export async function addNote(noteData) {
+export const addNote = async(noteData) => {
   const response = await fetch(`${FIREBASE_DOMAIN}/notes.json`, {
     method: 'POST',
     body: JSON.stringify(noteData),
