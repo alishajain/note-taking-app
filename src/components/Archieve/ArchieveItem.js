@@ -1,7 +1,7 @@
 import { changeNoteType } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 
-import classes from '../notes/NoteItem.module.css'; 
+import classes from "../notes/NoteItem.module.css";
 
 const ArchieveItem = ({ id, text }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
@@ -10,6 +10,7 @@ const ArchieveItem = ({ id, text }) => {
     event.preventDefault();
 
     sendRequest({ noteId: id, noteType: "inbox" });
+    window.location.reload(true);
   };
 
   return (

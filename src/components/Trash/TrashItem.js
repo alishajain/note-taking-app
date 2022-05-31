@@ -10,6 +10,7 @@ const TrashItem = ({ id, text }) => {
     event.preventDefault();
 
     sendRequest({ noteId: id, noteType: "inbox" });
+    window.location.reload(true);
   };
 
   return (

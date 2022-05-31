@@ -1,23 +1,24 @@
 import { Link } from "react-router-dom";
 
 import { changeNoteType } from "../../lib/api";
-import useHttp from '../../hooks/use-http';
+import useHttp from "../../hooks/use-http";
 import classes from "./NoteItem.module.css";
 
-const NoteItem = ({ id, text }) => {
-  const {sendRequest} = useHttp(changeNoteType, true);
+const NoteItem = ({ id, text, type }) => {
+  const { sendRequest } = useHttp(changeNoteType, true);
 
   const archieveBtnHandler = (event) => {
     event.preventDefault();
 
-    sendRequest({noteId:id, noteType: 'archieve'});
+    sendRequest({ noteId: id, noteType: "archieve" });
+    window.location.reload(true);
   };
 
   const deleteBtnHandler = (event) => {
     event.preventDefault();
 
-    sendRequest({noteId:id, noteType:'trash'});
-    return console.log('Jain.....');
+    sendRequest({ noteId: id, noteType: "trash" });
+    window.location.reload(true);
   };
 
   return (
@@ -29,9 +30,9 @@ const NoteItem = ({ id, text }) => {
         View Fullscreen
       </Link>
       <button className="btn">Add Label</button>
-      <button className="btn" onClick={archieveBtnHandler}>
+      <Link className="btn" onClick={archieveBtnHandler} to="/archieve">
         Archieve
-      </button>
+      </Link>
       <button className="btn" onClick={deleteBtnHandler}>
         Delete
       </button>
