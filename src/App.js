@@ -5,6 +5,9 @@ import NoteDetail from './pages/NoteDetails';
 import NewNote from './pages/NewNote';
 import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
+import ArchieveNote from './pages/ArchieveNote';
+import AllTrashNotes from './pages/AllTrashNotes';
+import Label from './pages/Label';
 
 function App() {
   return (
@@ -21,6 +24,15 @@ function App() {
         </Route>
         <Route path='/new-note'>
           <NewNote />
+        </Route>
+        <Route path='/archieve'>
+          <ArchieveNote />
+        </Route>
+        <Route path='/trash'>
+          <AllTrashNotes />
+        </Route>
+        <Route path='/label' >
+          <Label />
         </Route>
         <Route path='*'>
           <NotFound />

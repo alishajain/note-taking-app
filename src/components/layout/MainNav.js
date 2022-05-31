@@ -18,6 +18,11 @@ const MainNavigation = () => {
               Add Note
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/trash" activeClassName={classes.active}>
+              Trash
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </header>

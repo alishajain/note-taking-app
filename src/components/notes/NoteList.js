@@ -8,7 +8,7 @@ const NoteList = (props) => {
     <Fragment>
       <ul className={classes.list}>
         {props.notes.map((note) => (
-          <NoteItem key={note.id} id={note.id} text={note.text} />
+          <NoteItem key={note.id} id={note.id} text={note.text} type='inbox'/>
         ))}
       </ul>
     </Fragment>

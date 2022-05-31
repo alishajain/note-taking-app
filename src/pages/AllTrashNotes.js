@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, Fragment } from "react";
 
-import NoteList from "../components/notes/NoteList";
 import LoadingSpinner from "../components/ui/LoadingSpinner";
+import TrashList from "../components/Trash/TrashList";
 import NoNotes from "../components/notes/NoNotes";
 import useHttp from "../hooks/use-http";
 import { getAllNotes } from "../lib/api";
 
-const AllNotes = () => {
+const AllTrashNotes = () => {
   const {
     sendRequest,
     status,
@@ -34,7 +34,11 @@ const AllNotes = () => {
     return <NoNotes />;
   }
 
-  return <NoteList notes={loadedNotes} />;
+  return (
+    <Fragment>
+      <TrashList notes={loadedNotes} />
+    </Fragment>
+  );
 };
 
-export default AllNotes;
+export default AllTrashNotes;

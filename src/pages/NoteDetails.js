@@ -37,7 +37,6 @@ const NoteDetail = () => {
   if (!loadedNotes.text) {
     return <p className="centered">No Notes Found</p>;
   }
-  console.log(loadedNotes);
 
   return <HighlightedNote text={loadedNotes.text} />;
 };

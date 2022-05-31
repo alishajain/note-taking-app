@@ -10,12 +10,12 @@ const NoteForms = (props) => {
 
   const textInputRef = useRef();
 
-  function submitFormHandler(event) {
+  const submitFormHandler= (event) => {
     event.preventDefault();
 
     const enteredText = textInputRef.current.value;
 
-    props.onAddNote({ text: enteredText });
+    props.onAddNote({ text: enteredText, type: 'inbox' });
   }
 
   const finishEnteringHandler = () => {
