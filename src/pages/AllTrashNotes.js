@@ -1,4 +1,4 @@
-import { useEffect, Fragment } from "react";
+import { useEffect } from "react";
 
 import LoadingSpinner from "../components/ui/LoadingSpinner";
 import TrashList from "../components/Trash/TrashList";
@@ -35,9 +35,7 @@ const AllTrashNotes = () => {
   }
 
   return (
-    <Fragment>
-      <TrashList notes={loadedNotes} />
-    </Fragment>
+    <TrashList notes={loadedNotes.filter((note) => note.type === "trash")} />
   );
 };
 

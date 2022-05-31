@@ -3,7 +3,7 @@ import useHttp from "../../hooks/use-http";
 
 import classes from '../notes/NoteItem.module.css'; 
 
-const TrashItem = ({ id, text }) => {
+const ArchieveItem = ({ id, text }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
 
   const inboxBtnHandler = (event) => {
@@ -24,4 +24,4 @@ const TrashItem = ({ id, text }) => {
   );
 };
 
-export default TrashItem;
+export default ArchieveItem;

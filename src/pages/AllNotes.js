@@ -34,7 +34,7 @@ const AllNotes = () => {
     return <NoNotes />;
   }
 
-  return <NoteList notes={loadedNotes} />;
+  return <NoteList notes={loadedNotes.filter((note) => note.type === 'inbox')} />;
 };
 
 export default AllNotes;

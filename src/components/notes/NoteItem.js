@@ -4,7 +4,7 @@ import { changeNoteType } from "../../lib/api";
 import useHttp from '../../hooks/use-http';
 import classes from "./NoteItem.module.css";
 
-const NoteItem = ({ id, text, type }) => {
+const NoteItem = ({ id, text }) => {
   const {sendRequest} = useHttp(changeNoteType, true);
 
   const archieveBtnHandler = (event) => {
