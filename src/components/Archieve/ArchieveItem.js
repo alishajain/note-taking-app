@@ -1,20 +1,24 @@
 import { changeNoteType } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 
+import NoteDate from "../notes/NoteDate";
 import classes from "../notes/NoteItem.module.css";
 
-const ArchieveItem = ({ id, text }) => {
+const ArchieveItem = ({ id, text, date }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
 
   const inboxBtnHandler = (event) => {
     event.preventDefault();
 
     sendRequest({ noteId: id, noteType: "inbox" });
-    window.location.reload(true);
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500)
   };
 
   return (
     <li className={classes.item}>
+      <NoteDate date={date} />
       <blockquote>
         <p>{text}</p>
       </blockquote>

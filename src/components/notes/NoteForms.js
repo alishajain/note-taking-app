@@ -9,14 +9,20 @@ const NoteForms = (props) => {
   const [isEntering, setIsEntering] = useState(false);
 
   const textInputRef = useRef();
+  const dateInputRef = useRef();
 
-  const submitFormHandler= (event) => {
+  const submitFormHandler = (event) => {
     event.preventDefault();
 
     const enteredText = textInputRef.current.value;
+    const enteredDate = dateInputRef.current.value;
 
-    props.onAddNote({ text: enteredText, type: 'inbox' });
-  }
+    props.onAddNote({
+      text: enteredText,
+      type: "inbox",
+      date: enteredDate,
+    });
+  };
 
   const finishEnteringHandler = () => {
     setIsEntering(false);
@@ -31,7 +37,7 @@ const NoteForms = (props) => {
       <Prompt
         when={isEntering}
         message={(location) =>
-          'Are you sure you want to leave? All your entered data will be lost!'
+          "Are you sure you want to leave? All your entered data will be lost!"
         }
       />
       <Card>
@@ -45,12 +51,22 @@ const NoteForms = (props) => {
               <LoadingSpinner />
             </div>
           )}
+          <div>
+            <label>Date</label>
+            <input
+              type="date"
+              min="2022-06-01"
+              ref={dateInputRef}
+            />
+          </div>
           <div className={classes.control}>
-            <label htmlFor='text'>Text</label>
-            <textarea id='text' rows='5' ref={textInputRef}></textarea>
+            <label htmlFor="text">Text</label>
+            <textarea id="text" rows="5" ref={textInputRef}></textarea>
           </div>
           <div className={classes.actions}>
-            <button onClick={finishEnteringHandler} className='btn'>Add Note</button>
+            <button onClick={finishEnteringHandler} className="btn">
+              Add Note
+            </button>
           </div>
         </form>
       </Card>
