@@ -7,7 +7,7 @@ const TrashList = (props) => {
     <Fragment>
       <ul className="list">
         {props.notes.map((note) => (
-          <TrashItem key={note.id} id={note.id} text={note.text} type='trash'/>
+          <TrashItem key={note.id} id={note.id} text={note.text} type='trash' date={note.date}/>
         ))}
       </ul>
     </Fragment>

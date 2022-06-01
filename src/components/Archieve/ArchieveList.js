@@ -7,7 +7,7 @@ const ArchieveList = (props) => {
     <Fragment>
       <ul className="list">
         {props.notes.map((note) => (
-          <ArchieveItem key={note.id} id={note.id} text={note.text} type='archieve'/>
+          <ArchieveItem key={note.id} id={note.id} text={note.text} type='archieve' date={note.date}/>
         ))}
       </ul>
     </Fragment>
