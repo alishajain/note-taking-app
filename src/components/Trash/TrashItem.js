@@ -5,7 +5,6 @@ import NoteDate from "../notes/NoteDate";
 import classes from "../notes/NoteItem.module.css";
 
 const TrashItem = ({ id, text, date }) => {
-  console.log(date);
   const { sendRequest } = useHttp(changeNoteType, true);
 
   const inboxBtnHandler = (event) => {

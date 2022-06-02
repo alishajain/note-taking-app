@@ -38,7 +38,7 @@ const NoteDetail = () => {
     return <p className="centered">No Notes Found</p>;
   }
 
-  return <HighlightedNote text={loadedNotes.text} />;
+  return <HighlightedNote text={loadedNotes.text} date={loadedNotes.date}/>;
 };
 
 export default NoteDetail;
