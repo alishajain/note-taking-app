@@ -63,7 +63,7 @@ export const changeNoteType = async({noteId, noteType}) => {
 export const editNoteData = async({noteId, noteText}) => {
   const response = await fetch(`${FIREBASE_DOMAIN}/notes/${noteId}.json`, {
     method: 'PATCH',
-    body: JSON.stringify({text: noteText}),
+    body: JSON.stringify({"text": noteText}),
     headers: {
       'Content-Type' : 'application/json'
     }
@@ -73,7 +73,6 @@ export const editNoteData = async({noteId, noteText}) => {
   if(!response.ok) {
     throw new Error(data.message || 'Could not edit the note!!!');
   }
-
   const loadedNote = {
     id: noteId,
     text: noteText,

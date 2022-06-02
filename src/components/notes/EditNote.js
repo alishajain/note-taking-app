@@ -7,8 +7,9 @@ import { editNoteData } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 import HighlightedNote from "./HighlightedNote";
 
-const EditNote = (id, text, date) => {
+const EditNote = (props) => {
   const [isEntering, setIsEntering] = useState(true);
+  const [doneEditing, setDoneEditing] = useState(false);
   const { sendRequest } = useHttp(editNoteData, true);
 
   const textInputRef = useRef();
@@ -18,11 +19,16 @@ const EditNote = (id, text, date) => {
 
     const enteredText = textInputRef.current.value;
 
-    sendRequest({ noteId: id, noteText: enteredText });
+    sendRequest({ noteId: props.id, noteText: enteredText });
   };
 
   const finishEditHandler = () => {
     setIsEntering(false);
+    setDoneEditing(true);
+
+    setTimeout(() => {
+        window.location.reload(true);
+      }, 500);
   };
 
   return (
@@ -42,9 +48,9 @@ const EditNote = (id, text, date) => {
           <button onClick={finishEditHandler} className="btn">
             Submit
           </button>
+      {/* {doneEditing && <HighlightedNote id={props.id} text={props.text} date={props.date} />} */}
         </form>
       </Card>
-      {!isEntering && <HighlightedNote text={text} date={date} />}
     </Fragment>
   );
 };
