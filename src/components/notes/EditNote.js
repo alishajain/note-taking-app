@@ -2,10 +2,10 @@ import { useRef, useState, Fragment } from "react";
 import { Prompt } from "react-router-dom";
 
 import Card from "../ui/Card";
+import HighlightedNote from "./HighlightedNote";
 import classes from "./NoteForm.module.css";
 import { editNoteData } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
-import HighlightedNote from "./HighlightedNote";
 
 const EditNote = (props) => {
   const [isEntering, setIsEntering] = useState(true);
@@ -27,8 +27,8 @@ const EditNote = (props) => {
     setDoneEditing(true);
 
     setTimeout(() => {
-        window.location.reload(true);
-      }, 500);
+      window.location.reload(true);
+    }, 500);
   };
 
   return (
@@ -44,11 +44,16 @@ const EditNote = (props) => {
             <label htmlFor="text">Enter edited text</label>
             <textarea id="text" rows="5" ref={textInputRef}></textarea>
           </div>
-
           <button onClick={finishEditHandler} className="btn">
             Submit
           </button>
-      {/* {doneEditing && <HighlightedNote id={props.id} text={props.text} date={props.date} />} */}
+          {doneEditing && (
+            <HighlightedNote
+              id={props.id}
+              text={props.text}
+              date={props.date}
+            />
+          )}
         </form>
       </Card>
     </Fragment>

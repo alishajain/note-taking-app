@@ -35,9 +35,8 @@ const NoteItem = ({ id, text, date }) => {
         <p>{text}</p>
       </blockquote>
       <Link className="btn" to={`/notes/${id}`}>
-        View Fullscreen
+        View 
       </Link>
-      <button className="btn">Add Label</button>
       <button className="btn" onClick={archieveBtnHandler}>
         Archieve
       </button>
