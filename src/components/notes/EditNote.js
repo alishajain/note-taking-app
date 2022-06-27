@@ -1,5 +1,10 @@
 import { useRef, useState, Fragment } from "react";
 import { Prompt } from "react-router-dom";
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
+import { convertToHTML } from 'draft-convert';
+import DOMPurify from "dompurify";
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import Card from "../ui/Card";
 import HighlightedNote from "./HighlightedNote";
@@ -11,15 +16,24 @@ const EditNote = (props) => {
   const [isEntering, setIsEntering] = useState(true);
   const [doneEditing, setDoneEditing] = useState(false);
   const { sendRequest } = useHttp(editNoteData, true);
+  const [editorState, setEditorState] = useState(() =>
+  EditorState.createEmpty()
+);
+const  [convertedContent, setConvertedContent] = useState(null);
 
-  const textInputRef = useRef();
+const handleEditorChange = (state) => {
+  setEditorState(state);
+  convertContentToHTML();
+}
+const convertContentToHTML = () => {
+  let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+  setConvertedContent(currentContentAsHTML);
+}
 
   const submitFormHandler = (event) => {
     event.preventDefault();
 
-    const enteredText = textInputRef.current.value;
-
-    sendRequest({ noteId: props.id, noteText: enteredText });
+    sendRequest({ noteId: props.id, noteText: convertedContent });
   };
 
   const finishEditHandler = () => {
@@ -42,7 +56,18 @@ const EditNote = (props) => {
         <form className={classes.form} onSubmit={submitFormHandler}>
           <div className={classes.control}>
             <label htmlFor="text">Enter edited text</label>
-            <textarea id="text" rows="5" ref={textInputRef}></textarea>
+            <div
+              style={{
+                border: "1px solid black",
+                padding: "2px",
+                minHeight: "400px",
+              }}
+            >
+              <Editor
+                editorState={editorState}
+                onEditorStateChange={handleEditorChange}
+              />
+            </div>
           </div>
           <button onClick={finishEditHandler} className="btn">
             Submit

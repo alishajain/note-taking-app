@@ -1,5 +1,7 @@
 import { Fragment } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import DOMPurify from "dompurify";
+import { convertFromRaw } from "draft-js";
 
 import NoteItem from "./NoteItem";
 
@@ -33,6 +35,12 @@ const NoteList = (props) => {
     });
   };
 
+  const createMarkup = (html) => {
+    return  {
+      __html: DOMPurify.sanitize(html)
+    }
+  }
+
   return (
     <Fragment>
       <button className="btn" onClick={changeSortingHandler}>Sort by {isSortingAscending? 'latest first':'oldest first'}</button>
@@ -41,7 +49,7 @@ const NoteList = (props) => {
           <NoteItem
             key={note.id}
             id={note.id}
-            text={note.text}
+            text={createMarkup(convertedContent)}
             type="inbox"
             date={note.date}
           />

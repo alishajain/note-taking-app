@@ -1,4 +1,4 @@
-const FIREBASE_DOMAIN = 'https://note-taking-app-9601a-default-rtdb.firebaseio.com/';
+const FIREBASE_DOMAIN = 'https://note-taking-18ed3-default-rtdb.firebaseio.com/';
 
 export const getAllNotes = async() => {
   const response = await fetch(`${FIREBASE_DOMAIN}/notes.json`);

@@ -32,19 +32,19 @@ const NoteForms = (props) => {
       __html: DOMPurify.sanitize(html)
     }
   }
-  console.log(convertedContent);
 
   const dateInputRef = useRef();
 
   const submitFormHandler = (event) => {
     event.preventDefault();
-
+  
     const enteredDate = dateInputRef.current.value;
     props.onAddNote({
-      text: "asd",
+      text: convertedContent,
       type: "inbox",
       date: enteredDate,
     });
+
   };
 
   const finishEnteringHandler = () => {
@@ -92,7 +92,7 @@ const NoteForms = (props) => {
                 onEditorStateChange={handleEditorChange}
               />
             </div>
-            <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div>
+            {/* <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div> */}
           </div>
           <div className={classes.actions}>
             <button onClick={finishEnteringHandler} className="btn">
