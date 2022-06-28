@@ -1,9 +1,8 @@
-import { useRef, useState, Fragment } from "react";
+import { useState, Fragment } from "react";
 import { Prompt } from "react-router-dom";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
-import { convertToHTML } from 'draft-convert';
-import DOMPurify from "dompurify";
+import { EditorState } from "draft-js";
+import { convertToHTML } from "draft-convert";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import Card from "../ui/Card";
@@ -16,19 +15,19 @@ const EditNote = (props) => {
   const [isEntering, setIsEntering] = useState(true);
   const [doneEditing, setDoneEditing] = useState(false);
   const { sendRequest } = useHttp(editNoteData, true);
-  const [editorState, setEditorState] = useState(() =>
-  EditorState.createEmpty()
-);
-const  [convertedContent, setConvertedContent] = useState(null);
+const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
+  const [convertedContent, setConvertedContent] = useState(null);
 
-const handleEditorChange = (state) => {
-  setEditorState(state);
-  convertContentToHTML();
-}
-const convertContentToHTML = () => {
-  let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
-  setConvertedContent(currentContentAsHTML);
-}
+  const handleEditorChange = (state) => {
+    setEditorState(state);
+    convertContentToHTML();
+  };
+  const convertContentToHTML = () => {
+    let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
+    setConvertedContent(currentContentAsHTML);
+  };
 
   const submitFormHandler = (event) => {
     event.preventDefault();
@@ -42,7 +41,7 @@ const convertContentToHTML = () => {
 
     setTimeout(() => {
       window.location.reload(true);
-    }, 500);
+    }, 400);
   };
 
   return (
@@ -58,8 +57,8 @@ const convertContentToHTML = () => {
             <label htmlFor="text">Enter edited text</label>
             <div
               style={{
-                border: "1px solid black",
-                padding: "2px",
+                border: ".5px solid black",
+                padding: "1px",
                 minHeight: "400px",
               }}
             >

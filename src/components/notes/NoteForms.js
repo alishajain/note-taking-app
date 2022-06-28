@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { Fragment, useRef, useState, useEffect } from "react";
+import { Fragment, useRef, useState } from "react";
 import { Prompt } from "react-router-dom";
 import { Editor } from "react-draft-wysiwyg";
-import { EditorState, convertFromRaw, convertToRaw } from "draft-js";
-import { convertToHTML } from 'draft-convert';
+import { EditorState } from "draft-js";
+import { convertToHTML } from "draft-convert";
 import DOMPurify from "dompurify";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
@@ -13,38 +13,32 @@ import classes from "./NoteForm.module.css";
 
 const NoteForms = (props) => {
   const [isEntering, setIsEntering] = useState(false);
+
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-  const  [convertedContent, setConvertedContent] = useState(null);
+  const [convertedContent, setConvertedContent] = useState(null);
 
   const handleEditorChange = (state) => {
     setEditorState(state);
     convertContentToHTML();
-  }
+  };
   const convertContentToHTML = () => {
     let currentContentAsHTML = convertToHTML(editorState.getCurrentContent());
     setConvertedContent(currentContentAsHTML);
-  }
-
-  const createMarkup = (html) => {
-    return  {
-      __html: DOMPurify.sanitize(html)
-    }
-  }
+  };
 
   const dateInputRef = useRef();
 
   const submitFormHandler = (event) => {
     event.preventDefault();
-  
+
     const enteredDate = dateInputRef.current.value;
     props.onAddNote({
       text: convertedContent,
       type: "inbox",
       date: enteredDate,
     });
-
   };
 
   const finishEnteringHandler = () => {
@@ -92,7 +86,6 @@ const NoteForms = (props) => {
                 onEditorStateChange={handleEditorChange}
               />
             </div>
-            {/* <div className="preview" dangerouslySetInnerHTML={createMarkup(convertedContent)}></div> */}
           </div>
           <div className={classes.actions}>
             <button onClick={finishEnteringHandler} className="btn">

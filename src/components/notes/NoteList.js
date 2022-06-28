@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import DOMPurify from "dompurify";
-import { convertFromRaw } from "draft-js";
 
 import NoteItem from "./NoteItem";
 
@@ -49,7 +48,7 @@ const NoteList = (props) => {
           <NoteItem
             key={note.id}
             id={note.id}
-            text={createMarkup(convertedContent)}
+            text={<span dangerouslySetInnerHTML={createMarkup(note.text)}/>}
             type="inbox"
             date={note.date}
           />
