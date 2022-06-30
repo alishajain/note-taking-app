@@ -1,30 +1,29 @@
 import { NavLink } from "react-router-dom";
-
-import classes from "./MainNav.module.css";
+import "./MainNav.scss";
 
 const MainNavigation = () => {
   return (
-    <header className={classes.header}>
-      <div className={classes.logo}>Daily Notes</div>
-      <nav className={classes.nav}>
+    <header className="header">
+      <div className="logo">Daily Notes</div>
+      <nav className="nav">
         <ul>
           <li>
-            <NavLink to="/notes" activeClassName={classes.active}>
+            <NavLink to="/notes" activeClassName="active">
               All Notes
             </NavLink>
           </li>
           <li>
-            <NavLink to="/new-note" activeClassName={classes.active}>
+            <NavLink to="/new-note" activeClassName="active">
               Add Note
             </NavLink>
           </li>
           <li>
-            <NavLink to="/archieve" activeClassName={classes.active}>
+            <NavLink to="/archieve" activeClassName="active">
               Archieve
             </NavLink>
           </li>
           <li>
-            <NavLink to="/trash" activeClassName={classes.active}>
+            <NavLink to="/trash" activeClassName="active">
               Trash
             </NavLink>
           </li>

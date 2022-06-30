@@ -4,12 +4,11 @@ import { Prompt } from "react-router-dom";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState } from "draft-js";
 import { convertToHTML } from "draft-convert";
-import DOMPurify from "dompurify";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import Card from "../ui/Card";
 import LoadingSpinner from "../ui/LoadingSpinner";
-import classes from "./NoteForm.module.css";
+import "./NoteForms.scss";
 
 const NoteForms = (props) => {
   const [isEntering, setIsEntering] = useState(false);
@@ -60,19 +59,19 @@ const NoteForms = (props) => {
       <Card>
         <form
           onFocus={formFocusedHandler}
-          className={classes.form}
+          className="form"
           onSubmit={submitFormHandler}
         >
           {props.isLoading && (
-            <div className={classes.loading}>
+            <div className="loading">
               <LoadingSpinner />
             </div>
           )}
-          <div>
+          <div className="control">
             <label>Date</label>
             <input type="date" min="2022-06-01" ref={dateInputRef} />
           </div>
-          <div className={classes.control}>
+          <div className="control">
             <label htmlFor="text">Text</label>
             <div
               style={{
@@ -87,7 +86,7 @@ const NoteForms = (props) => {
               />
             </div>
           </div>
-          <div className={classes.actions}>
+          <div className="actions">
             <button onClick={finishEnteringHandler} className="btn">
               Add Note
             </button>

@@ -2,7 +2,7 @@ import { changeNoteType } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 
 import NoteDate from "../notes/NoteDate";
-import classes from "../notes/NoteItem.module.css";
+import "../notes/NoteItem.scss";
 
 const TrashItem = ({ id, text, date }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
@@ -17,7 +17,7 @@ const TrashItem = ({ id, text, date }) => {
   };
 
   return (
-    <li className={classes.item}>
+    <li className="item">
       <NoteDate date = {date} />
       <blockquote>
         <p>{text}</p>

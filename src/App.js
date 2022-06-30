@@ -7,7 +7,6 @@ import NotFound from './pages/NotFound';
 import Layout from './components/layout/Layout';
 import ArchieveNote from './pages/ArchieveNote';
 import AllTrashNotes from './pages/AllTrashNotes';
-import Label from './pages/Label';
 
 function App() {
   return (
@@ -30,9 +29,6 @@ function App() {
         </Route>
         <Route path='/trash'>
           <AllTrashNotes />
-        </Route>
-        <Route path='/label' >
-          <Label />
         </Route>
         <Route path='*'>
           <NotFound />

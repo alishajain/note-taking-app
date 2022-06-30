@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 
-import classes from "./NoNotes.module.css";
+import "./NoNotes.scss";
 
 const NoNotes = () => {
   return (
-    <div className={classes.nonote}>
+    <div className="nonote">
       <p >No Notes Found</p>
       <Link className="btn" to="/new-note">
         Add a Note

@@ -31,7 +31,7 @@ const AllTrashNotes = () => {
   }
 
   if (status === "completed" && (!loadedNotes || loadedNotes.length === 0)) {
-    return <NoNotes />;
+    return( <><p>no notes</p><NoNotes /></>);
   }
 
   return (

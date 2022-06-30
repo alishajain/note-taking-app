@@ -1,4 +1,4 @@
-import './NoteDate.css';
+import './NoteDate.scss';
 
 const NoteDate = ({date}) =>{
     const check = new Date(date);

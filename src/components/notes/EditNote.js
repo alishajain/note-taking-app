@@ -7,7 +7,7 @@ import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 import Card from "../ui/Card";
 import HighlightedNote from "./HighlightedNote";
-import classes from "./NoteForm.module.css";
+import "./NoteForms.scss";
 import { editNoteData } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 
@@ -52,8 +52,8 @@ const [editorState, setEditorState] = useState(() =>
       />
 
       <Card>
-        <form className={classes.form} onSubmit={submitFormHandler}>
-          <div className={classes.control}>
+        <form className="form" onSubmit={submitFormHandler}>
+          <div className="control">
             <label htmlFor="text">Enter edited text</label>
             <div
               style={{

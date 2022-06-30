@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { changeNoteType } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
 import NoteDate from "./NoteDate";
-import classes from "./NoteItem.module.css";
+import "./NoteItem.scss";
 
 const NoteItem = ({ id, text, date }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
@@ -29,7 +29,7 @@ const NoteItem = ({ id, text, date }) => {
   };
 
   return (
-    <li className={classes.item}>
+    <li className="item">
       <NoteDate date = {date} />
       <blockquote>
         <p>{text}</p>

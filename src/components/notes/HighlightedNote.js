@@ -1,7 +1,7 @@
 import { useState } from "react";
 import DOMPurify from "dompurify";
 
-import classes from "./HighlightedNote.module.css";
+import "./HighlightedNote.scss";
 import EditNote from "./EditNote";
 import NoteDate from "./NoteDate";
 
@@ -19,7 +19,7 @@ const HighlightedNote = (props) => {
   }
 
   return (
-    <div className={classes.note}>
+    <div className="note">
       <NoteDate date={props.date}/>
       {<div dangerouslySetInnerHTML={createMarkup(props.text)}/>}
       <button className="btn" onClick={editBtnHandler}>
