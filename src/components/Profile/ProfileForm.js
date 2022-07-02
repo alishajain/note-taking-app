@@ -2,7 +2,7 @@ import { useRef, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import AuthContext from '../../store/auth-context';
-import classes from './ProfileForm.module.css';
+import './ProfileForm.scss';
 
 const ProfileForm = () => {
   const history = useHistory();
@@ -35,12 +35,12 @@ const ProfileForm = () => {
   };
 
   return (
-    <form className={classes.form} onSubmit={submitHandler}>
-      <div className={classes.control}>
+    <form className="form" onSubmit={submitHandler}>
+      <div className="control">
         <label htmlFor='new-password'>New Password</label>
         <input type='password' id='new-password' minLength="7" ref={newPasswordInputRef} />
       </div>
-      <div className={classes.action}>
+      <div className="action">
         <button>Change Password</button>
       </div>
     </form>
