@@ -10,7 +10,6 @@ const MainNavigation = () => {
   const isLoggedIn = authCtx.isLoggedIn;
 
   const logoutHandler = () => {
-    console.log("alisha");
     authCtx.logout();
   };
 
@@ -32,11 +31,6 @@ const MainNavigation = () => {
               <NavLink to="/profile" activeClassName="active">
                 Profile
               </NavLink>
-            </li>
-          )}
-          {isLoggedIn && (
-            <li>
-              <button onClick={logoutHandler}>Logout</button>
             </li>
           )}
           {isLoggedIn && (
@@ -69,7 +63,9 @@ const MainNavigation = () => {
           )}
           {isLoggedIn && (
             <li>
-              <button onClick={logoutHandler}>Logout</button>
+              <button className="button" onClick={logoutHandler}>
+                Logout
+              </button>
             </li>
           )}
         </ul>

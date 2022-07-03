@@ -6,6 +6,23 @@
   justify-content: space-between;
   align-items: center;
   background-color: #008080;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+  button {
+    font: inherit;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    font-weight: bold;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+
+    &:hover {
+      color: #09efef;
+      background-color: #016060;
+    }
+  }
 }
 
 .logo {
@@ -19,6 +36,7 @@
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: baseline;
   }
 
   li {
@@ -29,12 +47,11 @@
   a {
     text-decoration: none;
     color: #88dfdf;
-  
 
-  &:hover,
-  &:active,
-  &.active {
-    color: #e6fcfc;
+    &:hover,
+    &:active,
+    &.active {
+      color: #e6fcfc;
+    }
   }
-}
 }
