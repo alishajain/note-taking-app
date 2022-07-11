@@ -27,11 +27,9 @@ const AuthForm = () => {
     setIsLoading(true);
     let url;
     if (isLogin) {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCHMfZmvU2GgA9TNklUiFLdbDDod2Qaypo";
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCHMfZmvU2GgA9TNklUiFLdbDDod2Qaypo';
     } else {
-      url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCHMfZmvU2GgA9TNklUiFLdbDDod2Qaypo";
+      url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCHMfZmvU2GgA9TNklUiFLdbDDod2Qaypo';
     }
     fetch(url, {
       method: "POST",
@@ -75,11 +73,11 @@ const AuthForm = () => {
     <section className="auth">
       <h1>{isLogin ? "Login" : "Sign Up"}</h1>
       <form onSubmit={submitHandler}>
-        <div className="control">
+        <div className="controls">
           <label htmlFor="email">Your Email</label>
           <input type="email" id="email" required ref={emailInputRef} />
         </div>
-        <div className="control">
+        <div className="controls">
           <label htmlFor="password">Your Password</label>
           <input
             type="password"

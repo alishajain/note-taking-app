@@ -15,7 +15,7 @@ const ProfileForm = () => {
 
     const enteredNewPassword = newPasswordInputRef.current.value;
 
-    fetch(process.env.CHANGE_PASSWORD, {
+    fetch(process.env.REACT_APP_CHANGE_PASSWORD, {
       method: 'POST',
       body: JSON.stringify({
         idToken: authCtx.token,
