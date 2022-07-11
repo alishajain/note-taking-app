@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { changeNoteType } from "../../lib/api";
 import useHttp from "../../hooks/use-http";
@@ -7,14 +7,15 @@ import "./NoteItem.scss";
 
 const NoteItem = ({ id, text, date }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
-  const history = useHistory();
-
+  
   const archieveBtnHandler = (event) => {
     event.preventDefault();
 
     sendRequest({ noteId: id, noteType: "archieve" });
 
-    history.go(0);
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500);
   };
 
   const deleteBtnHandler = (event) => {
@@ -22,11 +23,9 @@ const NoteItem = ({ id, text, date }) => {
 
     sendRequest({ noteId: id, noteType: "trash" });
     
-    // setTimeout(() => {
-    //   window.location.reload(true);
-    // }, 500);
-
-    history.go(0);
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500);
   };
 
   return (
