@@ -13,7 +13,7 @@ const ArchieveItem = ({ id, text, date }) => {
     sendRequest({ noteId: id, noteType: "inbox" });
     setTimeout(() => {
       window.location.reload(true);
-    }, 500)
+    }, 500);
   };
 
   return (
