@@ -18,7 +18,7 @@ const TrashList = (props) => {
             key={note.id}
             id={note.id}
             text={<span dangerouslySetInnerHTML={createMarkup(note.text)} />}
-            type="trash"
+            type={note.type}
             date={note.date}
           />
         ))}

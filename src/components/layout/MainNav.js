@@ -4,6 +4,29 @@ import { NavLink } from "react-router-dom";
 import "./MainNav.scss";
 import AuthContext from "../../store/auth-context";
 
+const links =[
+  {
+    name:"Profile",
+    path:"/profile"
+  },
+  {
+    name:"All notes",
+    path:"/notes"
+  },
+  {
+    name:"Add note",
+    path:"/new-note"
+  },
+  {
+    name:"Archieve",
+    path:"/archieve"
+  },
+  {
+    name:"Trash",
+    path:"/trash"
+  }
+]
+
 const MainNavigation = () => {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
   const authCtx = useContext(AuthContext);
@@ -34,39 +57,13 @@ const MainNavigation = () => {
           </li>
         )}
         {isLoggedIn && (
+          links.map(element => (
           <li>
-            <NavLink to="/profile" activeClassName="active">
-              Profile
+            <NavLink to={element.path} activeClassName="active">
+              {element.name}
             </NavLink>
-          </li>
-        )}
-        {isLoggedIn && (
-          <li>
-            <NavLink to="/notes" activeClassName="active">
-              All Notes
-            </NavLink>
-          </li>
-        )}
-        {isLoggedIn && (
-          <li>
-            <NavLink to="/new-note" activeClassName="active">
-              Add Note
-            </NavLink>
-          </li>
-        )}
-        {isLoggedIn && (
-          <li>
-            <NavLink to="/archieve" activeClassName="active">
-              Archieve
-            </NavLink>
-          </li>
-        )}
-        {isLoggedIn && (
-          <li>
-            <NavLink to="/trash" activeClassName="active">
-              Trash
-            </NavLink>
-          </li>
+          </li> 
+          ))
         )}
         {isLoggedIn && (
           <li>
