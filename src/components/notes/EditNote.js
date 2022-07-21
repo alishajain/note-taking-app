@@ -15,7 +15,7 @@ const EditNote = (props) => {
   const [isEntering, setIsEntering] = useState(true);
   const [doneEditing, setDoneEditing] = useState(false);
   const { sendRequest } = useHttp(editNoteData, true);
-const [editorState, setEditorState] = useState(() =>
+  const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
   const [convertedContent, setConvertedContent] = useState(null);
@@ -55,13 +55,7 @@ const [editorState, setEditorState] = useState(() =>
         <form className="form" onSubmit={submitFormHandler}>
           <div className="control">
             <label htmlFor="text">Enter edited text</label>
-            <div
-              style={{
-                border: ".5px solid black",
-                padding: "1px",
-                minHeight: "400px",
-              }}
-            >
+            <div className="editor">
               <Editor
                 editorState={editorState}
                 onEditorStateChange={handleEditorChange}

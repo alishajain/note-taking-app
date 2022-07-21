@@ -73,13 +73,7 @@ const NoteForms = (props) => {
           </div>
           <div className="control">
             <label htmlFor="text">Text</label>
-            <div
-              style={{
-                border: "1px solid black",
-                padding: "2px",
-                minHeight: "400px",
-              }}
-            >
+            <div className="editor">
               <Editor
                 editorState={editorState}
                 onEditorStateChange={handleEditorChange}

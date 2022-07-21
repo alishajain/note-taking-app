@@ -5,13 +5,13 @@
 }
 
 .auth {
-  margin: 3em auto;
+  margin: 30px auto;
   width: 95%;
   max-width: 25rem;
   border-radius: 6px;
   background-color: #025252;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  padding: 1em;
+  padding: 10px;
   text-align: center;
   h1 {
     text-align: center;
@@ -20,13 +20,13 @@
 }
 
 .controls {
-  margin-bottom: 0.5em;
+  margin-bottom: 10px;
 
   label {
     display: block;
     color: white;
     font-weight: bold;
-    margin-bottom: 0.5em;
+    margin-bottom: 10px;
   }
 
   input {
@@ -37,12 +37,12 @@
     border: 1px solid white;
     width: 100%;
     text-align: left;
-    padding: 0.25em;
+    padding: 2.5px;
   }
 }
 
 .actions {
-  margin-top: 1.5em;
+  margin-top: 20px;
   @include flex();
    button {
     cursor: pointer;
@@ -51,7 +51,7 @@
     background-color: #008080;
     border: 1px solid #008080;
     border-radius: 4px;
-    padding: 0.5em 2.5em;
+    padding: 5px 25px;
 
     &:hover {
       background-color: #02a2a2;
@@ -61,11 +61,11 @@
 }
 
 .actions .toggle {
-  margin-top: 1em;
+  margin-top: 10px;
   background-color: transparent;
   color: #008080;
   border: none;
-  padding: 0.15rem 1.5rem;
+  padding: 1.5px 15px;
 }
 
 .actions {
