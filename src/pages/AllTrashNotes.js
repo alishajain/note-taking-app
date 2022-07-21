@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 
 import LoadingSpinner from "../components/ui/LoadingSpinner";
-import TrashList from "../components/Trash/TrashList";
+import NoteList from "../components/notes/NoteList";
 import NoNotes from "../components/notes/NoNotes";
 import useHttp from "../hooks/use-http";
 import { getAllNotes } from "../lib/api";
@@ -35,7 +35,7 @@ const AllTrashNotes = () => {
   }
 
   return (
-    <TrashList notes={loadedNotes.filter((note) => note.type === "trash")} />
+    <NoteList notes={loadedNotes.filter((note) => note.type === "trash")} page={'trash'}/>
   );
 };
 

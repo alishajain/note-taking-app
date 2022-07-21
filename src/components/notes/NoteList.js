@@ -49,8 +49,9 @@ const NoteList = (props) => {
             key={note.id}
             id={note.id}
             text={<span dangerouslySetInnerHTML={createMarkup(note.text)}/>}
-            type="inbox"
+            type={note.type}
             date={note.date}
+            page={props.page}
           />
         ))}
       </ul>
