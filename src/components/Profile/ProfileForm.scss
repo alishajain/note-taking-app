@@ -7,22 +7,22 @@
 .control {
   margin-bottom: 0.5rem;
 
- label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  color: #008080;
-  display: block;
-}
+  label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #008080;
+    display: block;
+  }
 
-input {
-  display: block;
-  font: inherit;
-  width: 100%;
-  border-radius: 4px;
-  border: 1px solid #024747;
-  padding: 0.25rem;
-  background-color: #f7f0fa;
-}
+  input {
+    display: block;
+    font: inherit;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid #024747;
+    padding: 0.25rem;
+    background-color: #f7f0fa;
+  }
 }
 
 .action {

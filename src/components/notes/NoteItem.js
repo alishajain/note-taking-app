@@ -9,33 +9,30 @@ import "./NoteItem.scss";
 const NoteItem = ({ id, text, date, page }) => {
   const { sendRequest } = useHttp(changeNoteType, true);
 
-  const archieveBtnHandler = (event) => {
-    event.preventDefault();
-
-    sendRequest({ noteId: id, noteType: "archieve" });
+  const btnHandler = (type) => {
+    sendRequest({ noteId: id, noteType: type });
 
     setTimeout(() => {
       window.location.reload(true);
     }, 500);
+  };
+
+  const archieveBtnHandler = (event) => {
+    event.preventDefault();
+
+    btnHandler("archieve");
   };
 
   const deleteBtnHandler = (event) => {
     event.preventDefault();
 
-    sendRequest({ noteId: id, noteType: "trash" });
-
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 500);
+    btnHandler("trash");
   };
 
   const inboxBtnHandler = (event) => {
     event.preventDefault();
 
-    sendRequest({ noteId: id, noteType: "inbox" });
-    setTimeout(() => {
-      window.location.reload(true);
-    }, 500);
+    btnHandler("inbox");
   };
 
   return (
@@ -44,6 +41,11 @@ const NoteItem = ({ id, text, date, page }) => {
       <blockquote>
         <p>{text}</p>
       </blockquote>
+      {(page === "archieve" || page === "trash") && (
+        <button className="btn" onClick={inboxBtnHandler}>
+          Move to Inbox
+        </button>
+      )}
       {page === "inbox" && (
         <Fragment>
           <Link className="btn" to={`/notes/${id}`}>
@@ -56,11 +58,6 @@ const NoteItem = ({ id, text, date, page }) => {
             Delete
           </button>
         </Fragment>
-      )}
-      {(page === "archieve" || "trash") && (
-        <button className="btn" onClick={inboxBtnHandler}>
-          Move to Inbox
-        </button>
       )}
     </li>
   );

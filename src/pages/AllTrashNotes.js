@@ -31,11 +31,19 @@ const AllTrashNotes = () => {
   }
 
   if (status === "completed" && (!loadedNotes || loadedNotes.length === 0)) {
-    return( <><p>no notes</p><NoNotes /></>);
+    return (
+      <>
+        <p>no notes</p>
+        <NoNotes />
+      </>
+    );
   }
 
   return (
-    <NoteList notes={loadedNotes.filter((note) => note.type === "trash")} page={'trash'}/>
+    <NoteList
+      notes={loadedNotes.filter((note) => note.type === "trash")}
+      page={"trash"}
+    />
   );
 };
 

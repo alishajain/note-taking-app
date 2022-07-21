@@ -7,7 +7,6 @@ import useHttp from "../hooks/use-http";
 import { getAllNotes } from "../lib/api";
 
 const AllNotes = () => {
-
   const {
     sendRequest,
     status,
@@ -35,7 +34,12 @@ const AllNotes = () => {
     return <NoNotes />;
   }
 
-  return <NoteList notes={loadedNotes.filter((note) => note.type === 'inbox')} page = {'inbox'}/>;
+  return (
+    <NoteList
+      notes={loadedNotes.filter((note) => note.type === "inbox")}
+      page={"inbox"}
+    />
+  );
 };
 
 export default AllNotes;

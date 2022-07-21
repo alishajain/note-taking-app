@@ -3,7 +3,7 @@
 }
 
 body {
-  font-family:  'Open Sans', 'Lato', sans-serif;
+  font-family: "Open Sans", "Lato", sans-serif;
   margin: 0;
   background-color: #e7f8f8;
 }
@@ -14,7 +14,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
 }
 
 .centered {
@@ -50,22 +50,22 @@ h6 {
     background-color: #11acac;
     border-color: #11acac;
   }
-}
 
-.btn--flat {
-  cursor: pointer;
-  font: inherit;
-  color: teal;
-  border: none;
-  background-color: none;
-  text-decoration: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
+  &--flat {
+    cursor: pointer;
+    font: inherit;
+    color: teal;
+    border: none;
+    background-color: none;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
 
-  &:hover,
-  &:active {
-    background-color: teal;
-    color: white;
+    &:hover,
+    &:active {
+      background-color: teal;
+      color: white;
+    }
   }
 }
 
