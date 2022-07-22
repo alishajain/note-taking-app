@@ -44,7 +44,7 @@
 .actions {
   margin-top: 20px;
   @include flex();
-   button {
+  button {
     cursor: pointer;
     font: inherit;
     color: white;

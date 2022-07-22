@@ -26,8 +26,10 @@ const AuthForm = () => {
 
     setIsLoading(true);
     let url;
-    url = (isLogin? process.env.REACT_APP_SIGNIN_URL: process.env.REACT_APP_SIGNUP_URL);
-    
+    url = isLogin
+      ? process.env.REACT_APP_SIGNIN_URL
+      : process.env.REACT_APP_SIGNUP_URL;
+
     fetch(url, {
       method: "POST",
       body: JSON.stringify({
